@@ -1,6 +1,6 @@
 from typing import List
 
-# O(n*2)
+# O(n**2)
 class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
         res = []
