@@ -8,14 +8,14 @@ class Solution:
             return nums[l]
         while l <= r:
             m = (l + r) // 2
-            print(l, r, m)
+            # print(l, r, m)
             if nums[m] < nums[r]:
                 if nums[m] < nums[m - 1]:
                     return nums[m]
                 r = m - 1
             else:
                 l = m + 1
-        print(l, r, m)
+        # print(l, r, m)
         return nums[m]
 
 
