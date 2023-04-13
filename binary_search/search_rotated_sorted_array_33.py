@@ -1,24 +1,27 @@
 from typing import List
 
 
+# This solution is for the O(logn) complexity.....28ms
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        l, r = 0, len(nums) - 1
-        while l <= r:
-            m = (l + r) // 2
-            if target == nums[m]:
-                return m
+        left, right = 0, len(nums) - 1
+        while left <= right:
+            mid = left + (right - left) // 2
+            if nums[mid] == target:
+                return mid
 
-            if nums[l] <= nums[m]:
-                if target > nums[m] or target < nums[l]:
-                    l = m + 1
+            # check if we in sorted part
+            if nums[mid] < nums[right]:
+                if nums[mid] < target <= nums[right]:
+                    left = mid + 1
                 else:
-                    r = m - 1
+                    right = mid - 1
+            # rotated part
             else:
-                if target < nums[m] or target > nums[r]:
-                    r = m - 1
+                if nums[left] <= target < nums[mid]:
+                    right = mid - 1
                 else:
-                    l = m + 1
+                    left = mid + 1
         return -1
 
 
